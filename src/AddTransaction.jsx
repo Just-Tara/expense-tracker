@@ -6,6 +6,7 @@ import { Antenna } from "lucide-react";
 function AddTransaction() {
     const { addTransaction } = useTransactions();
     const navigate = useNavigate();
+
     const [type, setType] = useState("expense");
     const [category, setCategory] = useState("others");
     const [amount, setAmount] = useState("");
@@ -32,20 +33,20 @@ function AddTransaction() {
         <>
             <div className="px-10 py-3 bg-[#eee] h-[100vh]">
                 <div className="flex justify-between cursor-pointer">
-                    <p className="text-blue-400">Cancel</p>
-                    <p className="text-blue-400 hover:text-gray-400">Save</p>
+                    <button className="text-blue-400 cursor-pointer">Cancel</button>
+                    <button className="text-blue-400 hover:text-gray-400 cursor-pointer" >Save</button>
                 </div>
                 <h2 className="text-[27px] font-bold mb-4">Add Transaction</h2>
                     <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="p-3 flex border-white bg-white">
                         <div className=" p-[4px] border-[#eee] rounded-md flex text-sm w-full bg-[#eee]">
                              <button 
-                                className={` ${ type === "income" ? "bg-white w-[50%] p-[6px]" : "bg-grey-200  w-[50%]"}`}
+                                className={`cursor-pointer ${ type === "income" ? "bg-white w-[50%] p-[6px]" : "bg-grey-200  w-[50%]"}`}
                                 type="Button"
                                 onClick={() => setType("income")}
                                 >Income</button>
                             <button
-                                className={`${ type === "expense" ? "bg-white w-[50%] p-[6px]" : "bg-grey-200  w-[50%]"}`}
+                                className={`cursor-pointer ${ type === "expense" ? "bg-white w-[50%] p-[6px]" : "bg-grey-200  w-[50%]"}`}
                                 type="Button"
                                 onClick={() => setType("expense")}
                             >Expense</button>

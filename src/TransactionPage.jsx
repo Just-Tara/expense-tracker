@@ -6,6 +6,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useTransactions } from "./Context/TransactionContext";
 
 function TransactionPage() {
+    const navigate = useNavigate()
 
     const { transactions, deleteTransaction} = useTransactions()
 
@@ -26,8 +27,24 @@ function TransactionPage() {
 
               <div>
                 {transactions.length === 0 ? (<p className="flex text-[20px] items-center h-[70vh] justify-center text-center text-gray-500">
-                  No Transaction Yet.<br/> Add your first Transaction</p> ) : (<ul>
-
+                  No Transaction Yet.<br/> Add your first Transaction</p> ) : (
+                  <ul>
+                    
+                      {transactions.map((t) => (
+                        <div 
+                          key={t.id}
+                          className="flex justify-between items-center border-b py-2">
+                            <div>
+                              <p className="font-medium">{t.category}</p>
+                              <p className="text-sm text-gray-500">{t.date} at {t.time}</p>
+                            </div>
+                            <div className="flex items-center gap-4">
+                              <p className={`font-bold ${t.type === "income" ? "text-green-600" : "text-red-600"}`}>
+                                {t.type === "income" ? "+" : "-"}${t.amount}</p>
+                              <button onClick={() => deleteTransaction(t.id)} className="text-red-500">Delete</button>
+                            </div>
+                          </div>
+                      ))}
                 </ul>)}
 
                     
