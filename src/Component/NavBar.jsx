@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Dashboard from "../Dashboard.jsx"
 import TransactionPage from "../TransactionPage.jsx";
 import Settings from "../Settings.jsx";
-import TransactionForm from "../TransactionForm.jsx";
+import AddTransaction from "../AddTransaction.jsx";
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,7 +23,7 @@ function NavBar() {
         <Route path="/" element={<Dashboard/>}/>
         <Route path="/transactions" element={<TransactionPage/>}/>
         <Route path="/settings" element={<Settings/>}/>
-        <Route path="/add-transaction" element={<TransactionForm/>}/>
+        <Route path="/add-transaction" element={<AddTransaction/>}/>
        </Routes>
     </BrowserRouter>
    
