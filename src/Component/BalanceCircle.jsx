@@ -3,7 +3,7 @@ import React,{useEffect, useState} from "react";
 function BalanceCircle  ({income, expenses}) {
     const [progress, setProgress] = useState(0);
    const remaining = income - expenses;
-    const percentLeft = Math.max((remaining / income) * 100, 0);
+    const percentLeft = income > 0 ? Math.max((remaining / income) * 100, 0) : 0;
 
     useEffect(() =>{
         let start = 0;

@@ -13,7 +13,7 @@ function NavBar() {
     return(
         <>
     <BrowserRouter>
-      <nav className="bottom-0 h-15 items-center fixed w-full border flex justify-between px-10 text-gray-600">
+      <nav className="bottom-0 h-15 items-center fixed w-full border flex justify-between px-5 text-gray-600">
                 <Link to="/" className="text-[18px]"><FontAwesomeIcon icon={faHouse} /></Link>
                 <Link to="/transactions" className="text-[18px]"><FontAwesomeIcon icon={faListUl} /></Link>
                 <Link to="settings" className="text-[18px]"><FontAwesomeIcon icon={faGear} /></Link>               

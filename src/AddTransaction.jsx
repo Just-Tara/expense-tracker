@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTransactions } from "./Context/TransactionContext";
-import { Antenna } from "lucide-react";
+
 
 function AddTransaction() {
     const { addTransaction } = useTransactions();
@@ -11,17 +11,29 @@ function AddTransaction() {
     const [category, setCategory] = useState("others");
     const [amount, setAmount] = useState("");
      const [title, setTitle] = useState("");
+     const [note, setNote] = useState("");
+
+     const formatDate = (date) => {
+            date.toLocaleDateString("en-GB", {
+                day: "2-digit",
+                weekday: "short",
+                year: "2-digit",
+            });
+        };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        
         const newTransaction = {
             id: Date.now(),
             type,
+            title,
             category,
             amount:parseFloat(amount),
-            date: new Date().toLocaleDateString(),
-            time: new Date().toLocaleDateString(),
+            date: formatDate(new Date()),
+            time: new Date().toLocaleTimeString(),
+            note,
         };
 
         addTransaction(newTransaction);
@@ -32,24 +44,30 @@ function AddTransaction() {
     return(
         <>
             <div className="px-10 py-3 bg-[#eee] h-[100vh]">
-                <div className="flex justify-between cursor-pointer">
-                    <button className="text-blue-400 cursor-pointer">Cancel</button>
-                    <button className="text-blue-400 hover:text-gray-400 cursor-pointer" >Save</button>
+                <div className="flex justify-between cursor-pointer mb-4">
+                    <button onClick={() => navigate("/transactions")} className="text-blue-400 cursor-pointer">Cancel</button>
+                    <button onClick={handleSubmit} className="text-blue-400 cursor-pointer font-semibold">Save</button>
                 </div>
                 <h2 className="text-[27px] font-bold mb-4">Add Transaction</h2>
                     <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="p-3 flex border-white bg-white">
                         <div className=" p-[4px] border-[#eee] rounded-md flex text-sm w-full bg-[#eee]">
-                             <button 
-                                className={`cursor-pointer ${ type === "income" ? "bg-white w-[50%] p-[6px]" : "bg-grey-200  w-[50%]"}`}
-                                type="Button"
-                                onClick={() => setType("income")}
-                                >Income</button>
-                            <button
-                                className={`cursor-pointer ${ type === "expense" ? "bg-white w-[50%] p-[6px]" : "bg-grey-200  w-[50%]"}`}
-                                type="Button"
-                                onClick={() => setType("expense")}
-                            >Expense</button>
+                    <button
+                        type="button"   
+                        className={`cursor-pointer ${ type === "income" ? "bg-white w-[50%] p-[6px]" : "bg-grey-200  w-[50%]"}`}
+                        onClick={() => setType("income")}
+                        >
+                        Income
+                        </button>
+
+                        <button
+                        type="button"
+                        className={`cursor-pointer ${ type === "expense" ? "bg-white w-[50%] p-[6px]" : "bg-grey-200  w-[50%]"}`}
+                        onClick={() => setType("expense")}
+                        >
+                        Expense
+                        </button>
+
                         </div>
                     </div>
                     <p className="uppercase pl-3 text-xs text-gray-600">details</p>

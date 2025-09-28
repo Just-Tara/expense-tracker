@@ -12,9 +12,9 @@ function TransactionPage() {
 
     return(
         <>
-        <div className="p-10"> 
+        <div className="p-5 bg-[#f2f2f2] h-[100vh]"> 
             <h1 className="text-3xl font-bold mb-4">Transaction</h1>
-            <div className=" flex gap-1 border-1 rounded-xl px-2">
+            <div className="mb-4 flex gap-1 border-1 rounded-xl px-2">
                 <div className="flex items-center"> <FontAwesomeIcon icon={faMagnifyingGlass} /></div>
            
               <input
@@ -33,9 +33,10 @@ function TransactionPage() {
                       {transactions.map((t) => (
                         <div 
                           key={t.id}
-                          className="flex justify-between items-center border-b py-2">
+                          className="flex mb-1 justify-between items-center border-white bg-white rounded-[10px] p-2 py-2">
                             <div>
-                              <p className="font-medium">{t.category}</p>
+                              <p className="font-medium">{t.title || "Untitled"}</p>
+                              <p className="text-gray-500">{t.category}</p>
                               <p className="text-sm text-gray-500">{t.date} at {t.time}</p>
                             </div>
                             <div className="flex items-center gap-4">
@@ -50,7 +51,7 @@ function TransactionPage() {
                     
               </div>
 
-        <button onClick={() => navigate("/add-transaction")} className="fixed bottom-30 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-blue-700"><Plus size={28}/></button>
+        <button onClick={() => navigate("/add-transaction")} className="fixed bottom-23 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-blue-700"><Plus size={28}/></button>
               
 
         </div>
