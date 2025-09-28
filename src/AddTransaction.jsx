@@ -13,17 +13,22 @@ function AddTransaction() {
      const [title, setTitle] = useState("");
      const [note, setNote] = useState("");
 
-     const formatDate = (date) => {
-            date.toLocaleDateString("en-GB", {
-                day: "2-digit",
-                weekday: "short",
-                year: "2-digit",
-            });
+    
+    const formatDate = (date) => {
+        const options = {
+            day: "2-digit",
+            weekday: "short",
+            year: "2-digit",
+            month: "short"
         };
 
-
+        const parts = date.toLocaleDateString("en-GB", options).split(" ");
+        return `${parts[1]} ${parts[0].replace(",", "")} ${parts[3]}`
+        };
+       
     const handleSubmit = (e) => {
         e.preventDefault();
+
         
         const newTransaction = {
             id: Date.now(),
@@ -36,7 +41,7 @@ function AddTransaction() {
             note,
         };
 
-        addTransaction(newTransaction);
+         addTransaction(newTransaction);
         navigate("/transactions");
     };
     
@@ -44,9 +49,9 @@ function AddTransaction() {
     return(
         <>
             <div className="px-10 py-3 bg-[#eee] h-[100vh]">
-                <div className="flex justify-between cursor-pointer mb-4">
+                <div className="flex justify-between mt-3 cursor-pointer mb-4">
                     <button onClick={() => navigate("/transactions")} className="text-blue-400 cursor-pointer">Cancel</button>
-                    <button onClick={handleSubmit} className="text-blue-400 cursor-pointer font-semibold">Save</button>
+                    <button onClick={handleSubmit} className="text-gray-500 cursor-pointer font-semibold">Save</button>
                 </div>
                 <h2 className="text-[27px] font-bold mb-4">Add Transaction</h2>
                     <form onSubmit={handleSubmit} className="space-y-4">
@@ -91,8 +96,8 @@ function AddTransaction() {
                         <div className="flex justify-between px-3 p-1 font-semibold">
                             <p className="flex items-center">Date</p>
                             <div className="flex gap-2 ">
-                                <button className="bg-[#eee] p-1 rounded-md"></button>
-                                <button className="bg-[#eee] p-1 rounded-md"></button>
+                                <button className="bg-[#eee] p-1 rounded-md">28 Sun 25</button>
+                                <button className="bg-[#eee] p-1 rounded-md">5:57 PM</button>
                             </div>
                         </div>
                     </div>

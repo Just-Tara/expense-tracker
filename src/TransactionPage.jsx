@@ -20,7 +20,7 @@ function TransactionPage() {
               <input
                 type="text"
                 placeholder="Search Transaction"
-                className="flex-1 h-[40px] focus:outline-none "
+                className="flex-1 h-[40px]  focus:outline-none bg "
                 
               />
               </div>
@@ -33,7 +33,7 @@ function TransactionPage() {
                       {transactions.map((t) => (
                         <div 
                           key={t.id}
-                          className="flex mb-1 justify-between items-center border-white bg-white rounded-[10px] p-2 py-2">
+                          className="flex mb-1 justify-between items-center border-white bg-white rounded-[10px] px-3 py-2">
                             <div>
                               <p className="font-medium">{t.title || "Untitled"}</p>
                               <p className="text-gray-500">{t.category}</p>
