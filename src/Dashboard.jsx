@@ -65,7 +65,7 @@ function Dashboard() {
                 </div>
 
             </div>
-             <button onClick={() => navigate("/add-transaction")} className="fixed bottom-23 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-blue-700"><Plus size={28}/></button>
+             <button onClick={() => navigate("/add-transaction")} className="fixed bottom-23 right-3 bg-blue-500 text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-blue-400"><Plus size={28}/></button>
         </div>
        
         </>

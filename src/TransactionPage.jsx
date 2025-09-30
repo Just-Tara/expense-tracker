@@ -10,7 +10,7 @@ function TransactionPage() {
 
     const { transactions, deleteTransaction} = useTransactions()
 
-    return(
+    return(               
         <>
         <div className="p-5 bg-[#f2f2f2] h-[100vh]"> 
             <h1 className="text-3xl font-bold mb-4">Transaction</h1>
@@ -34,24 +34,31 @@ function TransactionPage() {
                         <div 
                           key={t.id}
                           className="flex mb-1 justify-between items-center border-white bg-white rounded-[10px] px-3 py-2">
-                            <div>
+                           
+                            <div className="flex gap-3 items-center">
+                              <div><p className="text-gray-500">
+                                 {t.icon}
+                                </p>
+                             </div>
+                             <div>
                               <p className="font-medium">{t.title || "Untitled"}</p>
-                              <p className="text-gray-500">{t.category}</p>
                               <p className="text-sm text-gray-500">{t.date} at {t.time}</p>
                             </div>
+                             </div>
                             <div className="flex items-center gap-4">
                               <p className={`font-bold ${t.type === "income" ? "text-green-600" : "text-red-600"}`}>
                                 {t.type === "income" ? "+" : "-"}${t.amount}</p>
                               <button onClick={() => deleteTransaction(t.id)} className="text-red-500">Delete</button>
                             </div>
                           </div>
+                         
                       ))}
                 </ul>)}
 
                     
               </div>
 
-        <button onClick={() => navigate("/add-transaction")} className="fixed bottom-23 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-blue-700"><Plus size={28}/></button>
+        <button onClick={() => navigate("/add-transaction")} className="fixed bottom-23 right-3 bg-blue-500 text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-blue-400"><Plus size={28}/></button>
               
 
         </div>

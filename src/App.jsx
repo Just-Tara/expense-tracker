@@ -1,12 +1,23 @@
-
-import Dashboard from "./Dashboard.jsx"
-import TransactionPage from "./TransactionPage.jsx";
+import { Routes, Route, useLocation } from "react-router-dom";
 import NavBar from "./Component/NavBar";
-function App(params) {
-  
-  return(
+import Dashboard from "./Dashboard";
+import TransactionPage from "./TransactionPage";
+import Settings from "./Settings";
+import AddTransaction from "./AddTransaction";
+
+function App() {
+  const location = useLocation();
+  const hideNavBar = location.pathname === "/add-transaction";
+
+  return (
     <>
-       <NavBar/>
+      {!hideNavBar && <NavBar />}
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/transactions" element={<TransactionPage />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/add-transaction" element={<AddTransaction />} />
+      </Routes>
     </>
   );
 }
