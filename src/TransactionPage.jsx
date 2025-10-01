@@ -36,7 +36,7 @@ function TransactionPage() {
                           className="flex mb-1 justify-between items-center border-white bg-white rounded-[10px] px-3 py-2 dark:bg-gray-950">
                            
                             <div className="flex gap-3 items-center">
-                              <div><p className={`text-gray-50 p-2 rounded-full ${t.type === "income" ? "bg-green-200" : "bg-red-200"}`}>
+                              <div><p className={`text-gray-50 p-2 rounded-[15px] ${t.type === "income" ? "bg-green-200" : "bg-red-200"}`}>
                                  {t.icon}
                                 </p>
                              </div>

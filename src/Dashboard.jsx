@@ -51,16 +51,26 @@ function Dashboard() {
                     <p className="p-3 text-gray-500 text-center text-sm">No transactions yet. <br></br> Create your first transaction</p>
                 ) : (
                     transactions.slice(0, 3).map((t) => (
-                    <div key={t.id} className="bg-white rounded-[10px] p-3 mb-1 flex justify-between">
-                        <div>
-                        <p className="font-medium">{t.title || "Untitled"}</p>
-                        <p className="text-gray-500 text-sm">{t.category}</p>
-                        <p className="text-xs text-gray-500 ">{t.date} at {t.time}</p>
-                        </div>
-                        <p className={`font-bold text-[18px] flex items-center ${t.type === "income" ? "text-green-600" : "text-red-600"}`}>
-                        {t.type === "income" ? "+" : "-"}${t.amount.toLocaleString()}
-                        </p>
-                    </div>
+                    <div 
+                          key={t.id}
+                          className="flex mb-1 justify-between items-center border-white bg-white rounded-[10px] px-3 py-2 dark:bg-gray-950">
+                           
+                            <div className="flex gap-3 items-center">
+                              <div><p className={`text-gray-50 p-2 rounded-[15px] ${t.type === "income" ? "bg-green-200" : "bg-red-200"}`}>
+                                 {t.icon}
+                                </p>
+                             </div>
+                             <div>
+                              <p className="font-medium">{t.title || "Untitled"}</p>
+                              <p className="text-sm text-gray-500">{t.date} at {t.time}</p>
+                            </div>
+                             </div>
+                            <div className="flex items-center gap-4">
+                              <p className={`font-bold ${t.type === "income" ? "text-green-600" : "text-red-600"}`}>
+                                {t.type === "income" ? "+" : "-"}${t.amount}</p>
+                            </div>
+                          </div>
+                         
                     ))
                 )}
                 </div>

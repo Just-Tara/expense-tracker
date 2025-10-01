@@ -4,6 +4,7 @@ import Dashboard from "./Dashboard";
 import TransactionPage from "./TransactionPage";
 import Settings from "./Settings";
 import AddTransaction from "./AddTransaction";
+import FullTransaction from "./FullTransaction";
 
 function App() {
   const location = useLocation();
@@ -17,6 +18,8 @@ function App() {
         <Route path="/transactions" element={<TransactionPage />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/add-transaction" element={<AddTransaction />} />
+        <Route path="/full-transaction" element={<FullTransaction/>} />
+        
       </Routes>
     </>
   );
