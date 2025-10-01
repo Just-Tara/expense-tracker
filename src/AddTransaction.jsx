@@ -55,8 +55,8 @@ function AddTransaction() {
         id: Date.now(),
         type,
         title,
-        category: selectedCategory.label,   // ✅ just the label
-        icon: selectedCategory.icon,        // ✅ store the emoji
+        category: selectedCategory.label,   
+        icon: selectedCategory.icon,        
         amount: parseFloat(amount),
         date: currentDate,
         time: currentTime,
@@ -68,7 +68,7 @@ function AddTransaction() {
   };
 
   return (
-    <div className="px-10 py-3 bg-[#eee] h-[100vh]">
+    <div className="px-10 py-3 bg-[#eee] h-[100vh] dark:bg-gray-900 dark:text-white">
       <div className="flex justify-between mt-3 mb-4">
         <button onClick={() => navigate("/transactions")} className="text-blue-400 cursor-pointer">
           Cancel
@@ -84,18 +84,18 @@ function AddTransaction() {
       <h2 className="text-[27px] font-bold mb-4">Add Transaction</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="p-3 bg-white">
-          <div className="p-[4px] rounded-md flex text-sm w-full bg-[#eee]">
+        <div className="p-3 bg-white dark:bg-gray-950">
+          <div className="p-[4px] rounded-md flex text-sm w-full bg-[#eee] dark:bg-gray-900">
             <button
               type="button"
-              className={`cursor-pointer w-1/2 p-[6px] ${type === "income" ? "bg-white" : ""}`}
+              className={`cursor-pointer w-1/2 p-[6px] ${type === "income" ? "bg-white dark:bg-gray-950"  : ""}`}
               onClick={() => setType("income")}
             >
               Income
             </button>
             <button
               type="button"
-              className={`cursor-pointer w-1/2 p-[6px] ${type === "expense" ? "bg-white" : ""}`}
+              className={`cursor-pointer w-1/2 p-[6px] ${type === "expense" ? "bg-white dark:bg-gray-950" : ""}`}
               onClick={() => setType("expense")}
             >
               Expense
@@ -105,7 +105,7 @@ function AddTransaction() {
 
     
         <p className="uppercase pl-3 text-xs text-gray-600">details</p>
-        <div className="bg-white rounded-md">
+        <div className="bg-white rounded-md dark:bg-gray-950">
           <input
             type="text"
             placeholder="Title"
@@ -126,33 +126,33 @@ function AddTransaction() {
           <div className="flex justify-between px-3 p-1 font-semibold">
             <p className="flex items-center">Date</p>
             <div className="flex gap-2">
-              <button type="button" className="bg-[#eee] p-1 rounded-md">{currentDate}</button>
-              <button type="button" className="bg-[#eee] p-1 rounded-md">{currentTime}</button>
+              <button type="button" className="bg-[#eee] p-1 rounded-md dark:bg-gray-900">{currentDate}</button>
+              <button type="button" className="bg-[#eee] p-1 rounded-md dark:bg-gray-900">{currentTime}</button>
             </div>
           </div>
         </div>
 
         <p className="uppercase pl-3 text-xs text-gray-600">category</p>
         <select
-  value={category}
-  onChange={(e) => setCategory(e.target.value)}
-  className="block w-full max-w-full border border-gray-200 bg-white p-2 rounded-md overflow-hidden truncate"
->
-  <option value="" className="block w-full max-w-full border border-gray-200 bg-white p-2 rounded-md overflow-hidden truncate">-- Select Category --</option>
-  {categories[type].map((cat) => (
-    <option key={cat.label} value={cat.label}>
-      {cat.icon} {cat.label}
-    </option>
-  ))}
-</select>
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="block w-full max-w-full border border-gray-200 bg-white p-2 rounded-md overflow-hidden truncate dark:bg-gray-950"
+          >
+            <option value="" >-- Select Category --</option>
+            {categories[type].map((cat) => (
+              <option key={cat.label} value={cat.label}>
+                {cat.icon} {cat.label}
+              </option>
+            ))}
+          </select>
 
 
-        {/* Notes */}
+
         <p className="uppercase pl-3 text-xs text-gray-600">description</p>
         <textarea
           value={note}
           onChange={(e) => setNote(e.target.value)}
-          className="px-3 py-1 bg-white w-full rounded-md h-[100px] focus:outline-none"
+          className="px-3 py-1 bg-white w-full rounded-md h-[100px] focus:outline-none dark:bg-gray-950"
         />
       </form>
     </div>

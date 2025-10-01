@@ -12,7 +12,7 @@ function TransactionPage() {
 
     return(               
         <>
-        <div className="p-5 bg-[#f2f2f2] h-[100vh]"> 
+        <div className="p-5 bg-[#f2f2f2] h-[100vh] dark:bg-gray-900 dark:text-white"> 
             <h1 className="text-3xl font-bold mb-4">Transaction</h1>
             <div className="mb-4 flex gap-1 border-1 rounded-xl px-2">
                 <div className="flex items-center"> <FontAwesomeIcon icon={faMagnifyingGlass} /></div>
@@ -33,10 +33,10 @@ function TransactionPage() {
                       {transactions.map((t) => (
                         <div 
                           key={t.id}
-                          className="flex mb-1 justify-between items-center border-white bg-white rounded-[10px] px-3 py-2">
+                          className="flex mb-1 justify-between items-center border-white bg-white rounded-[10px] px-3 py-2 dark:bg-gray-950">
                            
                             <div className="flex gap-3 items-center">
-                              <div><p className="text-gray-500">
+                              <div><p className={`text-gray-50 p-2 rounded-full ${t.type === "income" ? "bg-green-200" : "bg-red-200"}`}>
                                  {t.icon}
                                 </p>
                              </div>

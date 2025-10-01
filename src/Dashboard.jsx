@@ -7,6 +7,7 @@ import { useTransactions } from './Context/TransactionContext';
 import { useNavigate } from "react-router-dom";
 import {Plus} from "lucide-react"
 
+
 function Dashboard() {
     const {transactions} = useTransactions();
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ function Dashboard() {
     const balance = income - expenses;    
     return(
         <>
-        <div className="p-5 bg-[#f2f2f2] h-[100vh] ">
+        <div className="p-5 bg-[#f2f2f2] h-[100vh] dark:bg-gray-900">
             <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
             <div className="grid grid-cols-2 gap-6 mb-4">
                 <div className="bg-green-100 border-green-100 rounded-[14px] border p-4">
