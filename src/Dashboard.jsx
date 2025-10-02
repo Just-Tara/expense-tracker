@@ -11,6 +11,7 @@ import {Plus} from "lucide-react"
 function Dashboard() {
     const {transactions} = useTransactions();
     const navigate = useNavigate();
+    
     navigate("/transactions");
 
     const income = transactions.filter((t) => t.type === "income").reduce((acc, curr) => acc + curr.amount, 0);

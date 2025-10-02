@@ -7,12 +7,12 @@ import { TransactionProvider } from "./Context/TransactionContext.jsx";
 import { ThemeProvider } from "./Context/ThemeContext.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <TransactionProvider>
-      <ThemeProvider>
-      <BrowserRouter>  
-        <App />
-      </BrowserRouter>
-      </ThemeProvider>
+    <ThemeProvider>
+       <TransactionProvider>
+        <BrowserRouter>  
+          <App />
+        </BrowserRouter>
     </TransactionProvider>
+    </ThemeProvider>
   </StrictMode>
 );

@@ -6,8 +6,8 @@ import Settings from "./Settings";
 import AddTransaction from "./AddTransaction";
 import FullTransaction from "./FullTransaction";
 
-function App() {
-  const location = useLocation();
+  function App() {
+ const location = useLocation();
   const hideNavBar = location.pathname === "/add-transaction";
 
   return (
@@ -22,7 +22,7 @@ function App() {
         
       </Routes>
     </>
-  );
+  ); 
 }
 
 export default App;

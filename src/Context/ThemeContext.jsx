@@ -1,10 +1,9 @@
-// src/Context/ThemeContext.jsx
+
 import { createContext, useState, useEffect } from "react";
 
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  // Load from localStorage or fallback to "light"
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
@@ -14,7 +13,7 @@ export const ThemeProvider = ({ children }) => {
       document.documentElement.classList.remove("dark");
     }
 
-    // save user preference
+    
     localStorage.setItem("theme", theme);
   }, [theme]);
 

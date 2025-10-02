@@ -5,6 +5,8 @@ export default function Settings() {
   const { theme, setTheme } = useContext(ThemeContext);
   const [open, setOpen] = useState(false);
 
+  console.log("Current theme:", theme)
+
   return (
     <div className="p-5 h-screen bg-white dark:bg-gray-900 dark:text-white">
       <h1 className="text-3xl font-bold mb-5">Settings</h1>
@@ -58,4 +60,4 @@ export default function Settings() {
         </select>
     </div>
   );
-}
+} 

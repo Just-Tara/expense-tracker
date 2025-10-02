@@ -105,14 +105,16 @@ function AddTransaction() {
 
     
         <p className="uppercase pl-3 text-xs text-gray-600">details</p>
-        <div className="bg-white rounded-md dark:bg-gray-950">
+        <div className="  bg-white rounded-md dark:bg-gray-950">
+          <div className="px-3">
           <input
             type="text"
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="px-3 py-2 border-b border-gray-200 w-full focus:outline-none"
+            className="border-b py-2 border-gray-200 w-full focus:outline-none"
           />
+          </div>
           <div className="flex px-3 items-center">
             <span className="font-semibold text-[18px]">$</span>
             <input
