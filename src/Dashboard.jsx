@@ -20,27 +20,26 @@ function Dashboard() {
     const balance = income - expenses;    
     return(
         <>
-        <div className="p-5 bg-[#f2f2f2] h-[100vh] dark:bg-gray-900">
+        <div className="p-5 bg-[#f2f2f2] h-[100vh] dark:bg-gray-900 dark:text-white">
             <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
             <div className="grid grid-cols-2 gap-6 mb-4">
-                <div className="bg-green-100 border-green-100 rounded-[14px] border p-4">
-                    <div className="mt-1 flex justify-between"><p className="text-green-600 text-[15px] font-semibold">Income</p> <FontAwesomeIcon className="text-white bg-green-400 rounded-full px-[2px] py-[2px] font-bold text-[10px]" icon={faArrowDown} /></div>
-                  
+            <div className="bg-green-200 border-green-300 rounded-[14px] border p-4 text-black">
+                <div className="mt-1 flex justify-between"><p className="text-green-600 text-[17px] font-semibold">Income</p> <FontAwesomeIcon className="text-white mt-1 bg-green-400 rounded-full p-[2px] font-bold text-[10px]" icon={faArrowDown} /></div>
                     <p className="font-bold text-[20px]">${income.toLocaleString()}</p>
                 </div>
-                <div className="bg-red-100 border-red-100 rounded-[14px] border p-4">
-                    <div className="mt-1 flex justify-between" ><p className="text-[15px] text-red-600 font-semibold">Expenses</p> <FontAwesomeIcon className="text-white bg-red-400 rounded-full px-[2px] py-[2px] font-bold text-[10px]" icon={faArrowUp} /></div>
+                <div className="bg-red-200 border-red-300 rounded-[14px] border p-4 text-black">
+                    <div className="mt-1 flex justify-between" ><p className="text-[17px] text-red-600 font-semibold">Expenses</p> <FontAwesomeIcon className="text-white  mt-1 bg-red-400 rounded-full p-[2px] font-bold text-[10px]" icon={faArrowUp} /></div>
                     <p className="font-bold text-[20px]">${expenses.toLocaleString()}</p>
                 </div>
             </div>
-            <div className="flex justify-between p-4 bg-blue-100 border-blue-50 rounded-[14px] mt-3 border">
+            <div className="flex justify-between p-4 bg-gray-200 border-blue-50 rounded-[14px] mt-3 border">
                 <div className=''>
-                    <h1 className='font-semibold'>Current balance</h1>
+                    <h1 className='font-semibold text-black'>Current balance</h1>
                     <p className='font-bold text-2xl text-blue-500'>${balance.toLocaleString()}</p>
-                </div>
-                <div>
-                    <BalanceCircle income={income} expenses={expenses}/>
-                </div>
+            </div>
+             <div>
+                <BalanceCircle income={income} expenses={expenses}/>
+            </div>
             </div>
             <div className="mt-3">
                 <div className="flex justify-between">
