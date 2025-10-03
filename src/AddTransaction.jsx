@@ -1,7 +1,20 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTransactions } from "./Context/TransactionContext";
-import { icon } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { 
+  faMoneyBillWave, 
+  faGift, 
+  faChartLine, 
+  faBriefcase, 
+  faEllipsisH, 
+  faHome, 
+  faBurger, 
+  faCartShopping, 
+  faBus, 
+  faBox 
+} from "@fortawesome/free-solid-svg-icons";
+
 
 function AddTransaction() {
   const { addTransaction } = useTransactions();
@@ -13,22 +26,23 @@ function AddTransaction() {
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");
 
-  const categories = {
-    income: [
-      { label: "Salary", icon: "💶" },
-      { label: "Gift", icon: "🎁" },
-      { label: "Investment", icon: "📈" },
-      { label: "Side Hustle", icon: ""},
-      { label: "Others", icon: ""}
-    ],
-    expense: [
-      { label: "Rent", icon: "🏠" },
-      { label: "Food", icon: "🍔" },
-      { label: "Shopping", icon: "🛒" },
-      { label: "Transportation", icon: ""},  
-      { label: "Others", icon: "📦" },
-    ],
-  };
+ const categories = {
+  income: [
+    { label: "Salary", icon: <FontAwesomeIcon icon={faMoneyBillWave} /> },
+    { label: "Gift", icon: <FontAwesomeIcon icon={faGift} /> },
+    { label: "Investment", icon: <FontAwesomeIcon icon={faChartLine} /> },
+    { label: "Side Hustle", icon: <FontAwesomeIcon icon={faBriefcase} /> },
+    { label: "Others", icon: <FontAwesomeIcon icon={faEllipsisH} /> },
+  ],
+  expense: [
+    { label: "Rent", icon: <FontAwesomeIcon icon={faHome} /> },
+    { label: "Food", icon: <FontAwesomeIcon icon={faBurger} /> },
+    { label: "Shopping", icon: <FontAwesomeIcon icon={faCartShopping} /> },
+    { label: "Transportation", icon: <FontAwesomeIcon icon={faBus} /> },
+    { label: "Others", icon: <FontAwesomeIcon icon={faBox} /> },
+  ],
+};
+
 
   const formatDate = (date) => {
     const options = {
