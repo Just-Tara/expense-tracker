@@ -1,4 +1,3 @@
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faArrowDown} from '@fortawesome/free-solid-svg-icons'
 import {faArrowUp} from '@fortawesome/free-solid-svg-icons'
@@ -6,10 +5,10 @@ import BalanceCircle from "./Component/BalanceCircle";
 import { useTransactions } from './Context/TransactionContext'; 
 import { useNavigate } from "react-router-dom";
 import {Plus} from "lucide-react"
-import DesktopDashboard from './DesktopDashboard';
 
 
-function Dashboard() {
+function DesktopDashboard() {
+
     const {transactions} = useTransactions();
     const navigate = useNavigate();
     
@@ -19,11 +18,13 @@ function Dashboard() {
 
     const expenses = transactions.filter((t) => t.type === "expense").reduce((acc, curr) => acc + curr.amount, 0);
     const balance = income - expenses;    
+
     return(
-        <>
-        <div className="p-5 bg-[#f2f2f2] lg:w-[50%] lg: mx-auto  dark:bg-gray-900 dark:text-white lg:hidden">
-            <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
-            <div className="grid grid-cols-2 gap-6 mb-4">
+         <div className="hidden lg:flex flex-col gap-4 h-[100vh] rounded-2xl">
+
+            <div className="p-5 bg-[#f2f2f2]  h-[100vh] lg:w-[50%] lg: mx-auto  dark:bg-gray-900 dark:text-white rounded-2xl">
+                <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
+                 <div className="grid grid-cols-2 gap-6 mb-4">
             <div className="bg-[#d7f8df] rounded-[14px]  p-4 text-black dark:bg-[#153f25]">
                 <div className="mt-1 flex justify-between"><p className=" dark:text-[#69f0ae] text-[#1e8449] text-[17px] font-semibold">Income</p> <FontAwesomeIcon className="text-white dark:text-[#69f0ae] mt-1 bg-[#1e8449] rounded-full p-[2px] font-bold text-[10px]" icon={faArrowDown} /></div>
                     <p className="font-bold text-[20px]">${income.toFixed(2)}</p>
@@ -42,7 +43,10 @@ function Dashboard() {
                 <BalanceCircle income={income} expenses={expenses}/>
             </div>
             </div>
-            <div className="mt-3">
+            </div>
+
+            <div className="p-5 bg-[#f2f2f2]  h-[100vh]  lg:w-[50%] lg: mx-auto  dark:bg-gray-900 dark:text-white rounded-2xl">
+                 <div className="mt-3">
                 <div className="flex justify-between">
                     <h1 className='font-bold text-[17px]'>Recent Transaction</h1>
                     <p className='text-blue-500 cursor-pointer' onClick={() => navigate("/transactions")}>See All</p>
@@ -79,12 +83,10 @@ function Dashboard() {
 
             </div>
              <button onClick={() => navigate("/add-transaction")} className="fixed bottom-23 right-3 bg-blue-500 text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-blue-400"><Plus size={28}/></button>
-        </div>
-
-       <DesktopDashboard/>
+            </div>
+       </div>
        
-        </>
     )
-
 }
-export default Dashboard;
+
+export default DesktopDashboard;

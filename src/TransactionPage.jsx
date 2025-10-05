@@ -12,7 +12,7 @@ function TransactionPage() {
 
     return(               
         <>
-        <div className="p-5 bg-[#f2f2f2] h-[100vh] dark:bg-gray-900 dark:text-white"> 
+        <div className="p-5 bg-[#f2f2f2] lg:w-[50%] lg: mx-auto h-[100vh] dark:bg-gray-900 dark:text-white"> 
             <h1 className="text-3xl font-bold mb-4">Transaction</h1>
             <div className="mb-4 flex gap-1 border-1 rounded-xl px-2">
                 <div className="flex items-center"> <FontAwesomeIcon icon={faMagnifyingGlass} /></div>
