@@ -14,10 +14,10 @@ function NavBar() {
                 <NavLink to="/transactions" className={({ isActive }) => isActive ? "text-black dark:text-white" : "text-gray-600 "}><FontAwesomeIcon icon={faListUl} /></NavLink>
                 <NavLink to="/settings" className={({ isActive }) => isActive ? "text-black dark:text-white" : "text-gray-600 "}><FontAwesomeIcon icon={faGear} /></NavLink>               
        </nav>
-        <nav className="hidden lg:flex flex-col absolute w-[24%] h-[100%] pt-8 pl-8 rounded-sm bg-[#f2f2f2] text-gray-600 text-[18px] dark:bg-gray-900 gap-12 rounded-r-2xl">
-                <NavLink to="/" className={({ isActive }) => isActive ? "text-black text-[22px] dark:text-white" : "text-gray-600 text-[22px] "}><FontAwesomeIcon icon={faHouse} /> Dashboard</NavLink>
-                <NavLink to="/transactions" className={({ isActive }) => isActive ? "text-black text-[22px] dark:text-white" : "text-[22px] text-gray-600 "}><FontAwesomeIcon icon={faListUl} /> Transactions</NavLink>
-                <NavLink to="/settings" className={({ isActive }) => isActive ? "text-black text-[22px] dark:text-white" : "text-[22px] text-gray-600 "}><FontAwesomeIcon icon={faGear} /> Settings</NavLink>               
+        <nav className="hidden lg:flex flex-col absolute w-[24%] h-[100%] pt-8 pl-3  bg-[#f2f2f2] text-gray-600 text-[18px] dark:bg-gray-900 gap-12 rounded-r-2xl">
+                <NavLink to="/" className={({ isActive }) => isActive ? "text-black text-[22px] flex gap-3 w-full rounded-l-lg bg-[#2563eb] p-2  dark:text-white" : "text-gray-600 text-[22px] pl-2 flex gap-3 "}><FontAwesomeIcon icon={faHouse} className="mt-1" /> <span>Dashboard</span></NavLink>
+                <NavLink to="/transactions" className={({ isActive }) => isActive ? "text-black text-[22px] flex gap-3 w-full rounded-l-lg bg-[#2563eb] p-2  dark:text-white" : "text-[22px] pl-2 text-gray-600 flex gap-3 "}><FontAwesomeIcon icon={faListUl} className="mt-1" /><span>Transactions</span> </NavLink>
+                <NavLink to="/settings" className={({ isActive }) => isActive ? "text-black text-[22px] flex gap-3 w-full rounded-l-lg bg-[#2563eb] p-2  dark:text-white" : "text-[22px] pl-2 text-gray-600 flex gap-3 "}><FontAwesomeIcon icon={faGear}  className="mt-1"/> <span>Settings</span></NavLink>               
        </nav>
         </>
     );

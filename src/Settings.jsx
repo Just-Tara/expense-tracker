@@ -11,7 +11,7 @@ export default function Settings() {
     <div className="p-5 h-screen lg:w-[50%] lg: mx-auto bg-[#f2f2f2] dark:bg-gray-900 dark:text-white">
       <h1 className="text-3xl font-bold mb-5">Settings</h1>
       <p className="uppercase pl-3 mb-3 text-xs text-gray-600 dark:text-gray-300"> Theme </p>      
-      <div  className="cursor-pointer px-4 py-2 rounded-lg border mb-6 dark:border-gray-200 bg-white dark:bg-gray-800">
+      <div  className="cursor-pointer px-4 py-2 rounded-lg border mb-6 dark:border-gray-200 bg-[#f2f2f2] dark:bg-gray-800">
         
         <button onClick={() => setOpen(true)} className="cursor-pointer">Change Theme</button>
       </div>

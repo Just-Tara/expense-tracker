@@ -25,19 +25,21 @@ function DesktopDashboard() {
             <div className="p-5 bg-[#f2f2f2]  h-[100vh] lg:w-[50%] lg: mx-auto  dark:bg-gray-900 dark:text-white rounded-2xl">
                 <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
                  <div className="grid grid-cols-2 gap-6 mb-4">
-            <div className="bg-[#d7f8df] rounded-[14px]  p-4 text-black dark:bg-[#153f25]">
-                <div className="mt-1 flex justify-between"><p className=" dark:text-[#69f0ae] text-[#1e8449] text-[17px] font-semibold">Income</p> <FontAwesomeIcon className="text-white dark:text-[#69f0ae] mt-1 bg-[#1e8449] rounded-full p-[2px] font-bold text-[10px]" icon={faArrowDown} /></div>
+            <div className="bg-[#d7f8df] rounded-[14px]  p-4 text-black dark:text-white dark:bg-[#2f4f3e]">
+                <div className="mt-1 flex justify-between">
+                    <p className=" dark:text-[#69f0ae] text-[#1e8449] text-[17px] font-semibold mb-1">Income</p> <FontAwesomeIcon className="text-white dark:text-[#69f0ae] mt-1 bg-[#1e8449] rounded-full p-[2px] font-bold text-[10px]" icon={faArrowDown} /></div>
                     <p className="font-bold text-[20px]">${income.toFixed(2)}</p>
                 </div>
-                <div className="bg-[#fddede] dark:bg-[#3d1818] rounded-[14px] p-4 text-black">
-                    <div className="mt-1 flex justify-between" ><p className="text-[17px] text-[#c0392b] dark:text-[#ff5252] font-semibold">Expenses</p> <FontAwesomeIcon className="text-white  mt-1 bg-[#c0392b] dark:bg-[#ff5252]0 rounded-full p-[2px] font-bold text-[10px]" icon={faArrowUp} /></div>
+                <div className="bg-[#fddede] dark:bg-[#5c3b3b] rounded-[14px] p-4 text-black dark:text-white">
+                    <div className="mt-1 flex justify-between">
+                    <p className="text-[17px] text-[#c0392b] dark:text-[#ff5252] font-semibold mb-1">Expenses</p> <FontAwesomeIcon className="text-white  mt-1 bg-[#c0392b] dark:bg-[#ff5252]0 rounded-full p-[2px] font-bold text-[10px]" icon={faArrowUp} /></div>
                     <p className="font-bold text-[20px]">${expenses.toFixed(2)}</p>
                 </div>
             </div>
-            <div className="flex justify-between p-4 bg-gray-200 border-blue-50 rounded-[14px] mt-3 border">
+            <div className="flex justify-between p-4 bg-gray-200 dark:bg-gray-800  rounded-[14px] mt-3 ">
                 <div className=''>
-                    <h1 className='font-semibold text-black'>Current balance</h1>
-                    <p className='font-bold text-2xl text-blue-500'>${balance.toFixed(2)}</p>
+                    <h1 className='font-semibold text-black dark:text-white mb-1'>Current balance</h1>
+                    <p className='font-bold text-2xl text-black dark:text-white'>${balance.toFixed(2)}</p>
             </div>
              <div>
                 <BalanceCircle income={income} expenses={expenses}/>
@@ -75,15 +77,18 @@ function DesktopDashboard() {
                               <p className={`font-bold ${t.type === "income" ? "text-green-600" : "text-red-600"}`}>
                                 {t.type === "income" ? "+" : "-"}${t.amount}</p>
                             </div>
+                            
                           </div>
                          
                     ))
                 )}
+                
                 </div>
 
             </div>
-             <button onClick={() => navigate("/add-transaction")} className="fixed bottom-23 right-3 bg-blue-500 text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-blue-400"><Plus size={28}/></button>
+                
             </div>
+            
        </div>
        
     )
