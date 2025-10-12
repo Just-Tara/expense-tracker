@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import NavBar from "./Component/NavBar";
 import Dashboard from "./Pages/Dashboard";
-import TransactionPage from "./TransactionPage";
+import TransactionPage from "./Pages/TransactionPage";
 import Settings from "./Pages/Settings";
 import AddTransaction from "./Pages/AddTransaction";
 import FullTransaction from "./Pages/FullTransaction";

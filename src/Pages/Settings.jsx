@@ -4,8 +4,9 @@ import { ThemeContext } from "../Context/ThemeContext.jsx";
 export default function Settings() {
   const { theme, setTheme } = useContext(ThemeContext);
   const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
-  console.log("Current theme:", theme)
+ 
 
   return (
     <div className="p-5 h-screen lg:w-[50%] lg: mx-auto bg-[#f2f2f2] dark:bg-gray-900 dark:text-white">
@@ -61,7 +62,34 @@ export default function Settings() {
          <p className="uppercase pl-3 mb-3  text-xs text-gray-600 dark:text-gray-300">Data Mangement</p> 
          <div  className="cursor-pointer pl-4 bg-white py-2 rounded-lg mb-6 dark:border-gray-200  dark:bg-gray-800 flex flex-col">
           <div className="border-b w-full border-gray-300 ">
-             <button className="float-left text-[14px] cursor-pointer text-red-500 dark:text-[#ff5252] py-1">Reset All Data</button>
+            <button onClick={() => setIsOpen(true)}  className="float-left text-[14px] cursor-pointer text-red-500 dark:text-[#ff5252] py-1">Reset All Data</button>
+             {isOpen && (
+        <div className="fixed inset-0 bg-black/50  flex items-center justify-center">
+          <div className="bg-[#f2f2f2] dark:bg-gray-800 p-6  rounded-2xl shadow-lg w-[80%] max-w-sm">
+            <h2 className="text-lg font-bold mb-4 text-center">
+              Reset All Data
+            </h2>
+              <p>This will permanently delete all your transactions. This action cannot be undone.</p>
+            <div className="flex justify-between border-t border-gray-300 dark:border-gray-600 mt-4 ">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-blue-500 text-[14px] cursor-pointer mt-1">
+                  Cancel
+                </button>
+                <p className="border-gray-300 dark:border-gray-600  border-r"></p>
+
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-red-500 dark:text-[#ff5252] text-[14px] cursor-pointer mt-1">
+                  Reset
+                </button>
+                
+            </div>
+            
+          </div>
+        </div>
+      )}
+
           </div>
          <div>
         <button className="text-blue-500 text-[14px] cursor-pointer ">Export Data</button>
