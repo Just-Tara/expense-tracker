@@ -25,10 +25,10 @@ function LoginPage() {
          md:bg-white/10 lg:bg-white/10 md:dark:bg-black/100 lg:dark:bg-black/100 lg:backdrop-blur-lg
           shadow-2xl dark:text-white"
         >
-          <h2 className="text-3xl font-bold mb-1 text-center">Create Account</h2>
+          <h2 className="text-3xl font-bold mb-1 text-center">Welcome Back</h2>
           <p className="mb-6 text-center text-xs">
-            Already have an account?{" "}
-            <Link to="/signup"  className="text-blue-500 dark:text-blue-700 cursor-pointer">Sign in</Link>
+            Don't have an account?{" "}
+            <Link to="/signup"  className="text-blue-500 dark:text-blue-700 cursor-pointer">Sign Up</Link>
           </p>
 
           <form className="flex flex-col gap-6">

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTransactions } from "./Context/TransactionContext";
+import { useTransactions } from "../Context/TransactionContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faMoneyBillWave, 

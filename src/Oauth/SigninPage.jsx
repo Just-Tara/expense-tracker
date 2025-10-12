@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 import { FcGoogle } from "react-icons/fc";
 import lightBg from "../assets/lightMode.png";
@@ -28,7 +28,7 @@ function SignUpPage() {
           <h2 className="text-3xl font-bold mb-1 text-center">Create Account</h2>
           <p className="mb-6 text-center text-xs">
             Already have an account?{" "}
-            <Link to="/login-page" className="text-blue-500 dark:text-blue-700 cursor-pointer">Sign In</Link>
+            <Link to="/" className="text-blue-500 dark:text-blue-700 cursor-pointer">Sign In</Link>
           </p>
 
           <form className="flex flex-col gap-6">
@@ -48,9 +48,6 @@ function SignUpPage() {
                 placeholder="Password"
                 className="p-3 px-10 w-full rounded-[10px] border focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              <p className="text-xs px-10 mt-1 text-blue-500 dark:text-blue-700  cursor-pointer">
-                Forgotten Password?
-              </p>
             </div>
             <button
               type="submit"

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { ThemeContext } from "./Context/ThemeContext.jsx";
+import { ThemeContext } from "../Context/ThemeContext.jsx";
 
 export default function Settings() {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -10,8 +10,8 @@ export default function Settings() {
   return (
     <div className="p-5 h-screen lg:w-[50%] lg: mx-auto bg-[#f2f2f2] dark:bg-gray-900 dark:text-white">
       <h1 className="text-3xl font-bold mb-5">Settings</h1>
-      <p className="uppercase pl-3 mb-3 text-xs text-gray-600 dark:text-gray-300"> Theme </p>      
-      <div  className="cursor-pointer px-4 py-2 rounded-lg border mb-6 dark:border-gray-200 bg-[#f2f2f2] dark:bg-gray-800">
+      <p className="uppercase pl-3 mb-3 text-xs  text-gray-600 dark:text-gray-300"> Theme </p>      
+      <div  className="cursor-pointer px-4 py-2 rounded-lg mb-6 bg-white dark:border-gray-200  dark:bg-gray-800">
         
         <button onClick={() => setOpen(true)} className="cursor-pointer">Change Theme</button>
       </div>
@@ -43,7 +43,6 @@ export default function Settings() {
               ))}
             </div>
 
-            {/* Close */}
             <button
               onClick={() => setOpen(false)}
               className="mt-6 w-full px-4 py-2 bg-blue-600 text-white rounded-lg"
@@ -55,9 +54,22 @@ export default function Settings() {
       )}
 
       <p className="uppercase pl-3 mb-3 text-xs text-gray-600 dark:text-gray-300"> Currency</p>   
-        <select name="" id="" className="cursor-pointer px-4 py-2 rounded-lg w-full border mb-6 dark:border-gray-200  dark:bg-gray-800">
+        <select name="" id="" className="cursor-pointer px-4 py-2 rounded-lg bg-white w-full mb-6 dark:border-gray-200  dark:bg-gray-800">
           <option value="">Currency</option>
         </select>
+
+         <p className="uppercase pl-3 mb-3  text-xs text-gray-600 dark:text-gray-300">Data Mangement</p> 
+         <div  className="cursor-pointer pl-4 bg-white py-2 rounded-lg mb-6 dark:border-gray-200  dark:bg-gray-800 flex flex-col">
+          <div className="border-b w-full border-gray-300 ">
+             <button className="float-left text-[14px] cursor-pointer text-red-500 dark:text-[#ff5252] py-1">Reset All Data</button>
+          </div>
+         <div>
+        <button className="text-blue-500 text-[14px] cursor-pointer ">Export Data</button>
+         </div>
+         
+        </div>  
+       
+      <button  className="uppercase pl-3 mb-3 text-gray-600 dark:text-gray-300">Log out</button>
     </div>
   );
 } 
