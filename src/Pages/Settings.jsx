@@ -1,5 +1,7 @@
 import { useContext, useState } from "react";
 import { ThemeContext } from "../Context/ThemeContext.jsx";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faRightFromBracket, faTrash, faArrowUpFromBracket} from '@fortawesome/free-solid-svg-icons'
 
 export default function Settings() {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -62,7 +64,7 @@ export default function Settings() {
          <p className="uppercase pl-3 mb-3  text-xs text-gray-600 dark:text-gray-300">Data Mangement</p> 
          <div  className="cursor-pointer pl-4 bg-white py-2 rounded-lg mb-6 dark:border-gray-200  dark:bg-gray-800 flex flex-col">
           <div className="border-b w-full border-gray-300 ">
-            <button onClick={() => setIsOpen(true)}  className="float-left text-[14px] cursor-pointer text-red-500 dark:text-[#ff5252] py-1">Reset All Data</button>
+          <button onClick={() => setIsOpen(true)}  className="float-left text-[14px] cursor-pointer text-red-500 dark:text-[#ff5252] py-1"> <FontAwesomeIcon icon={faTrash}/>  Reset All Data</button>
              {isOpen && (
         <div className="fixed inset-0 bg-black/50  flex items-center justify-center">
           <div className="bg-[#f2f2f2] dark:bg-gray-800 p-6  rounded-2xl shadow-lg w-[80%] max-w-sm">
@@ -92,12 +94,12 @@ export default function Settings() {
 
           </div>
          <div>
-        <button className="text-blue-500 text-[14px] cursor-pointer ">Export Data</button>
+        <button className="text-blue-500 text-[14px] cursor-pointer "> <FontAwesomeIcon icon={faArrowUpFromBracket}/> Export Data</button>
          </div>
          
         </div>  
        
-      <button  className="uppercase pl-3 mb-3 text-gray-600 dark:text-gray-300">Log out</button>
+      <button  className="uppercase pl-3 mb-3 text-gray-600 dark:text-gray-300"> <FontAwesomeIcon icon={faRightFromBracket}/> Log out</button>
     </div>
   );
 } 

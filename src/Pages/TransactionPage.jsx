@@ -9,6 +9,13 @@ function TransactionPage() {
     const navigate = useNavigate()
 
     const { transactions, deleteTransaction} = useTransactions()
+    const [searchTerm, setSearchTerm] = useState("")
+
+    const filteredTransactions = transactions.filter((t) =>
+      (t.title?.toLowerCase() || "").includes(searchTerm.toLowerCase())||
+      (t.date?.toLowerCase() || "").includes(searchTerm.toLowerCase()) ||
+      (t.amount?.toString() || "").includes(searchTerm)  
+    );
 
     return(               
         <>
@@ -20,21 +27,23 @@ function TransactionPage() {
               <input
                 type="text"
                 placeholder="Search Transaction"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 className="flex-1 h-[40px]  focus:outline-none bg "
                 
               />
               </div>
 
               <div>
-                {transactions.length === 0 ? (<p className="flex text-[20px] items-center h-[70vh] justify-center text-center text-gray-500">
+                {filteredTransactions.length === 0 ? (<p className="flex text-[20px] items-center h-[70vh] justify-center text-center text-gray-500">
                   No Transaction Yet.<br/> Add your first Transaction</p> ) : (
                   <ul>
                     
-                      {transactions.sort((a, b) => new Date(b.date + " " + b.time) - new Date(a.date + " " + a.time)).map((t) => (
+                      {filteredTransactions.sort((a, b) => new Date(b.date + " " + b.time) - new Date(a.date + " " + a.time)).map((t) => (
                         <div 
                           key={t.id}
-                          className="flex mb-1 justify-between items-center border-white bg-white rounded-[10px] px-3 py-2 dark:bg-gray-950">
-                           
+                          className="flex mb-1 justify-between items-center cursor-pointer border-white bg-white rounded-[10px] px-3 py-2 dark:bg-gray-950"
+                          onClick={() => navigate(`/full-transaction/${t.id}`)}>
                             <div className="flex gap-3 items-center">
                               <div><p className={`text-gray-800 p-2 rounded-[15px] ${t.type === "income" ? "bg-green-200" : "bg-red-200"}`}>
                                  {t.icon}

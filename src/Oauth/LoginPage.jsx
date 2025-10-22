@@ -1,10 +1,39 @@
 import { Link } from "react-router-dom";
-
+import { useGoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import lightBg from "../assets/lightMode.png";
 import darkBg from "../assets/darkMode.png";
 
 function LoginPage() {
+
+  const navigate = useNavigate();
+
+ const login = useGoogleLogin({
+  onSuccess: async (tokenResponse) => {
+    try {
+      const userInfoResponse = await fetch(
+        "https://www.googleapis.com/oauth2/v3/userinfo",
+        {
+          headers: {
+            Authorization: `Bearer ${tokenResponse.access_token}`,
+          },
+        }
+      );
+
+      const userInfo = await userInfoResponse.json();
+      localStorage.setItem("user", JSON.stringify(userInfo));
+
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Failed to fetch user info:", error);
+    }
+  },
+  onError: () => console.log("Login Failed"),
+});
+
+
   return (
     <div className="relative min-h-screen w-full overflow-hidden transition-all duration-500">
       <div
@@ -63,8 +92,9 @@ function LoginPage() {
 
           {/* Google Login Button */}
           <button
+            onClick={() => login()}
             type="button"
-            className="flex items-center justify-center gap-3 px-3 w-full bg-gray-400 dark:bg-gray-500 transition py-3 rounded-lg"
+            className="flex items-center justify-center cursor-pointer gap-3 px-3 w-full bg-gray-400 dark:bg-gray-500 transition py-3 rounded-lg"
           >
             <FcGoogle size={22} />
             <span className="font-medium">Continue with Google</span>

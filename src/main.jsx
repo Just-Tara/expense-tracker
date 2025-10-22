@@ -5,14 +5,17 @@ import "./index.css";
 import App from "./App.jsx";
 import { TransactionProvider } from "./Context/TransactionContext.jsx";
 import { ThemeProvider } from "./Context/ThemeContext.jsx";
+import { GoogleOAuthProvider } from "@react-oauth/google"
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ThemeProvider>
-       <TransactionProvider>
-        <BrowserRouter>  
-          <App />
-        </BrowserRouter>
-    </TransactionProvider>
-    </ThemeProvider>
+    <GoogleOAuthProvider clientId="692380171587-2alv0q3kqsck5vjp6tj2dqchmrqdn21j.apps.googleusercontent.com">
+      <ThemeProvider>
+        <TransactionProvider>
+          <BrowserRouter>  
+            <App />
+          </BrowserRouter>
+      </TransactionProvider>
+      </ThemeProvider>
+    </GoogleOAuthProvider>
   </StrictMode>
 );

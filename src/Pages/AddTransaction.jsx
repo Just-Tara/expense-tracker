@@ -82,7 +82,7 @@ function AddTransaction() {
   };
 
   return (
-    <div className="px-10 py-3 bg-[#eee] h-[100vh] dark:bg-gray-900 dark:text-white">
+    <div className=" px-10 py-3 bg-[#eee] min-h-screen dark:bg-gray-900 dark:text-white">
       <div className="flex justify-between mt-3 mb-4">
         <button onClick={() => navigate("/transactions")} className="text-blue-400 cursor-pointer">
           Cancel

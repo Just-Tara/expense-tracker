@@ -1,10 +1,37 @@
-import { Link } from "react-router-dom";
-
+import { useGoogleLogin } from "@react-oauth/google";
+import { useNavigate, Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import lightBg from "../assets/lightMode.png";
 import darkBg from "../assets/darkMode.png";
 
 function SignUpPage() {
+
+  const navigate = useNavigate();
+
+  const signup = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        const userInfoResponse = await fetch(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${tokenResponse.access_token}`,
+            },
+          }
+        );
+
+        const userInfo = await userInfoResponse.json();
+        console.log("User Info:", userInfo);
+
+        localStorage.setItem("user", JSON.stringify(userInfo));
+
+        navigate("/dashboard");
+      } catch (error) {
+        console.error("Signup failed:", error);
+      }
+    },
+    onError: () => console.log("Sign Up Failed"),
+  });
   return (
     <div className="relative min-h-screen w-full overflow-hidden transition-all duration-500">
       <div
@@ -65,6 +92,7 @@ function SignUpPage() {
 
           
           <button
+          onClick={() => signup()}
             type="button"
             className="flex items-center justify-center gap-3 px-3 w-full bg-gray-400 dark:bg-gray-500 transition py-3 rounded-lg"
           >

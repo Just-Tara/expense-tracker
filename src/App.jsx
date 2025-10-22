@@ -35,7 +35,8 @@ function App() {
         <Route path="/transactions" element={ <TransactionPage/>}/>
         <Route path="/settings" element={ <Settings /> }/>
         <Route path="/add-transaction" element={ <AddTransaction />}/>
-        <Route path="/full-transaction" element={ <FullTransaction />}/>
+        <Route path="/full-transaction/:id" element={<FullTransaction />} />
+    
       </Routes>
     </div>
   );
