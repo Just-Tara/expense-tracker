@@ -9,12 +9,18 @@ import ChartBox from "./Component/ChartBox";
 import LoginPage from "./Oauth/LoginPage";
 import SignUpPage from "./Oauth/SigninPage";
 import Onboarding from "./OnboardingFlow/Onboarding";
-
+import TestAPI from "./TestAPI";
 function App() {
-  const location = useLocation();
+{/** return(
+<TestAPI />
+);
+
+*/}
+
+ const location = useLocation();
   const hideNavBar = location.pathname === "/add-transaction" || location.pathname === "/login-page" || location.pathname === "/onboarding";
 
-  const isLoggedIn = localStorage.getItem("authToken"); // or however you track login
+  const isLoggedIn = localStorage.getItem("authToken"); 
 
   return (
     <div className="bg-white dark:bg-[#0b1220]">
@@ -39,7 +45,7 @@ function App() {
     
       </Routes>
     </div>
-  );
+  ); 
 }
 
 export default App;

@@ -2,12 +2,47 @@ import { useContext, useState } from "react";
 import { ThemeContext } from "../Context/ThemeContext.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faRightFromBracket, faTrash, faArrowUpFromBracket} from '@fortawesome/free-solid-svg-icons'
+import { exportData, deleteUserData } from "../api.js";
+
 
 export default function Settings() {
   const { theme, setTheme } = useContext(ThemeContext);
   const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false)
 
+
+  const handleReset = async () => {
+    try {
+      await deleteUserData();
+      alert("All data has been reset.");
+      setIsOpen(false);
+      
+    } catch (error) {
+      console.error("Error resetting data:", error);
+      alert("Failed to reset data. Please try again.");
+    }
+
+  };
+  const handleExport = async () => {  
+    try {
+      const response = await exportData();
+      const blob = response;
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a"); 
+      a.href = url
+      a.download = "expense_data.zip";
+      a.click();
+      a.remove();
+    } catch (error) {
+      console.error("Error exporting data:", error);
+      alert("Failed to export data. Please try again.");
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  }
  
 
   return (
@@ -66,7 +101,7 @@ export default function Settings() {
           <div className="border-b w-full border-gray-300 ">
           <button onClick={() => setIsOpen(true)}  className="float-left text-[14px] cursor-pointer text-red-500 dark:text-[#ff5252] py-1"> <FontAwesomeIcon icon={faTrash}/>  Reset All Data</button>
              {isOpen && (
-        <div className="fixed inset-0 bg-black/50  flex items-center justify-center">
+       <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
           <div className="bg-[#f2f2f2] dark:bg-gray-800 p-6  rounded-2xl shadow-lg w-[80%] max-w-sm">
             <h2 className="text-lg font-bold mb-4 text-center">
               Reset All Data
@@ -81,7 +116,7 @@ export default function Settings() {
                 <p className="border-gray-300 dark:border-gray-600  border-r"></p>
 
                 <button
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => handleReset()}
                   className="text-red-500 dark:text-[#ff5252] text-[14px] cursor-pointer mt-1">
                   Reset
                 </button>
@@ -94,12 +129,16 @@ export default function Settings() {
 
           </div>
          <div>
-        <button className="text-blue-500 text-[14px] cursor-pointer "> <FontAwesomeIcon icon={faArrowUpFromBracket}/> Export Data</button>
+        <button 
+          onClick={() => handleExport()}
+          className="text-blue-500 text-[14px] cursor-pointer "> <FontAwesomeIcon icon={faArrowUpFromBracket}/> Export Data</button>
          </div>
          
         </div>  
        
-      <button  className="uppercase pl-3 mb-3 text-gray-600 dark:text-gray-300"> <FontAwesomeIcon icon={faRightFromBracket}/> Log out</button>
+      <button 
+        onClick={() => handleLogout()}
+        className="uppercase pl-3 mb-3 text-gray-600 dark:text-gray-300"> <FontAwesomeIcon icon={faRightFromBracket}/> Log out</button>
     </div>
   );
 } 
